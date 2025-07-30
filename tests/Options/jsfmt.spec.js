@@ -51,4 +51,26 @@ describe("Options", () => {
         });
         await expect(actual).toMatchFileSnapshot(snapshotFile);
     });
+
+    it("break inline elements - enabled", async () => {
+        const { actual, snapshotFile } = await run_spec(import.meta.url, {
+            source: "breakInlineElements.twig",
+            suffix: "enabled",
+            formatOptions: {
+                twigBreakInlineElements: true
+            }
+        });
+        expect(actual).toMatchFileSnapshot(snapshotFile);
+    });
+
+    it("break inline elements - disabled", async () => {
+        const { actual, snapshotFile } = await run_spec(import.meta.url, {
+            source: "breakInlineElements.twig",
+            suffix: "disabled",
+            formatOptions: {
+                twigBreakInlineElements: false
+            }
+        });
+        expect(actual).toMatchFileSnapshot(snapshotFile);
+    });
 });

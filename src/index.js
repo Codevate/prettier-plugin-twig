@@ -110,6 +110,13 @@ const options = {
         category: "Global",
         default: false,
         description: "Output the Twig block name in the 'endblock' tag"
+    },
+    twigBreakInlineElements: {
+        type: "boolean",
+        category: "Global",
+        default: true,
+        description:
+            "If true, inline HTML elements will be broken - which can add extra whitespace that is rendered in the browser"
     }
 };
 

@@ -64,7 +64,9 @@ const printElement = (node, path, print, options) => {
     const closingTag = ["</", node.name, ">"];
     const result = [openingGroup];
     const joinedChildren = childGroups;
-    if (isOwnlineElement(node) || isInlineElement(node)) {
+    if (isInlineElement(node) && !options.twigBreakInlineElements) {
+        result.push(joinedChildren);
+    } else if (isOwnlineElement(node) || isInlineElement(node)) {
         const element = [indent([softline, joinedChildren]), softline];
         result.push(element);
     } else {
